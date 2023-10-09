@@ -1,9 +1,19 @@
+
 import * as icons from 'react-bootstrap-icons'
-import { Link } from 'react-router-dom'
-
-const Navbar = () => {
+import { Link, useNavigate } from 'react-router-dom'
 
 
+
+const Navbar = ({ setLoginModal ,authToken,setAuthToken}) => {
+
+    const navigate = useNavigate()
+     
+
+    const logoutHandler = () =>{
+        localStorage.removeItem('auth_token')
+        setAuthToken(false)
+        navigate('/')
+    }
 
     return (
         <>
@@ -19,25 +29,17 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categories
-                                </span>
-                                <ul className="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDropdown">
-                                    <li className='dropdown-item px-2' role='button'>Languages</li>
-                                    <li className='dropdown-item px-2' role='button'>Frameworks</li>
-                                    <li className='dropdown-item px-2' role='button'>Libraries</li>
-                                </ul>
-                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/about">About Us</Link>
                             </li>
-                            <li className="nav-item">
+                            {authToken && <li className="nav-item">
                                 <Link className="nav-link" to="/write">Write</Link>
-                            </li>
+                            </li>}
+
                         </ul>
                         <div className="d-flex" data-bs-toggle="tooltip" data-bs-placement="left" title="login">
-                            <icons.PersonCircle role='button' size={20} />
+                           {authToken && <button className='btn btn-small btn-danger' onClick={logoutHandler} >Logout</button>}
+                           { !authToken && <icons.PersonCircle role='button' size={20} onClick={() => setLoginModal(true)} />}
                         </div>
                     </div>
                 </div>
