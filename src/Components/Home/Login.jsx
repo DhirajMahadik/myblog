@@ -39,11 +39,11 @@ const Login = ({setLoginModal, setAuthToken}) => {
                 </div>
                     <div className="py-2">
                         <label className='form-lable' htmlFor="username">Username</label>
-                        <input className='form-control' type="text" name='username' id='username' value={data.username} onChange={onchangeHander} />
+                        <input required className='form-control' type="text" name='username' id='username' value={data.username} onChange={onchangeHander} />
                     </div>
                     <div className="py-2">
                         <label className='form-lable' htmlFor="password">Password</label>
-                        <input className='form-control' type="password" name='password' id='password' value={data.password} onChange={onchangeHander}/>
+                        <input required className='form-control' type="password" name='password' id='password' value={data.password} onChange={onchangeHander}/>
                     </div>
                     <div className="d-flex justify-content-center align-items-center py-2">
                         <button type="submit" className='btn btn-success my-2' >Login</button>
