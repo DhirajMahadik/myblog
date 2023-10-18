@@ -1,4 +1,4 @@
-import { HomeStyled } from '../../Styled/HomeStyled'
+import {HomeStyled} from '../Styled/HomeStyled'
 import * as icons from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -21,7 +21,7 @@ const Home = () => {
       setCategory('Search results')
     setIsLoading(true)
     try {
-      axios.get(`http://127.0.0.1:5500/api/blogs/search/${e.target.value}`)
+      axios.get(`${process.env.REACT_APP_URL}/api/blogs/search/${e.target.value}`)
       .then((response) => {
         setBlogs(response.data)
         setIsLoading(false)
@@ -40,7 +40,7 @@ const Home = () => {
     setIsLoading(true)
     setCategory('Recent Blogs')
     try {
-      axios.get('http://127.0.0.1:5500/api/all-blogs')
+      axios.get(`${process.env.REACT_APP_URL}/api/all-blogs`)
         .then((response) => {
           setBlogs(response.data)
           setIsLoading(false)
@@ -57,7 +57,7 @@ const Home = () => {
   const getCategoryWiseBlogs = (value) => {
     setIsLoading(true)
     setCategory(value)
-    axios.get(`http://127.0.0.1:5500/api/blogs/${value}`)
+    axios.get(`${process.env.REACT_APP_URL}/api/blogs/${value}`)
       .then((response) => {
         setIsLoading(false)
         setBlogs(response.data)

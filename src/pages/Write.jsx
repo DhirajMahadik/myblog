@@ -31,7 +31,7 @@ const Write = () => {
                 formData.append(key, data[key]);
             }
             setIsLoding(true)
-            axios({ method: 'POST', url: 'http://127.0.0.1:5500/api/add-blog', data: formData, headers: { 'authorization': `Bearer ${JSON.parse(authToken)}` } })
+            axios({ method: 'POST', url: `${process.env.REACT_APP_URL}/api/add-blog`, data: formData, headers: { 'authorization': `Bearer ${JSON.parse(authToken)}` } })
                 .then((response) => {
                     setIsLoding(false)
                     toast.success(response.data.message)
@@ -57,11 +57,6 @@ const Write = () => {
     return (
         <>
             <ToastContainer position='top-center' theme='light' autoClose={3000} />
-            {/* <div className='d-flex position-absolute sticky-top  vw-100' style={{backgroundColor:'#00000026'}}>
-                <div className='m-auto'>
-                 <ThreeDots height="50" width="80"  radius="9" color='green' className="m-auto" />
-                </div>
-            </div> */}
             <div className='container-fluid bg-primary-subtle vh-80 '>
                 <form className='container bg-light p-4' onSubmit={postblog}>
                     <div className='heading'>

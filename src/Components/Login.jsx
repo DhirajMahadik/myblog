@@ -10,7 +10,7 @@ const Login = ({setLoginModal, setAuthToken}) => {
 
     const loginHandler = (e) =>{
         e.preventDefault();
-        axios.post('http://127.0.0.1:5500/api/auth/login',data)
+        axios.post(`${process.env.REACT_APP_URL}/api/auth/login`,data)
         .then((response)=>{
             localStorage.setItem('auth_token',JSON.stringify(response.data.token))
             setData({username:'', password:''})

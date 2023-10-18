@@ -10,7 +10,7 @@ const SingleBlog = () => {
     const [blog,setBlog] = useState({title:'',thumbnail:'',description:'',headline:"",date:''})
    
     const getBlogData = () =>{
-        axios.get(`http://127.0.0.1:5500/api/blog/${id}`)
+        axios.get(`${process.env.REACT_APP_URL}/api/blog/${id}`)
         .then((response)=>{
             setBlog(response.data)
         }).catch((error)=>{
