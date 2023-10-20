@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 test user
-username : admin
+username : admin , 
 password : 123
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
